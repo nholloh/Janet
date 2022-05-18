@@ -48,7 +48,7 @@ The following features have been implemented or are planned for implementation.
 - [ ] CocoaPods support
 - [ ] Carthage support
 
-If you would like to raise a feature request, please refer to the contribution section first.
+If you would like to raise a feature request, please refer to the [contribution](#Contributing) section first.
 
 ## Installation
 
@@ -163,3 +163,19 @@ Its an acronym, which stands for:
 **NET** Network (library)
 
 Also, its a reference to an incredibly helpful and empathetic AI from the series The Good Place. If you haven't seen it, you should definitely check it out!
+
+## Contributing
+
+For contributions, please consider the following scenarios:
+
+### You find a bug
+
+Please raise an issue and describe the bug you found. Feel free to fork and fix the bug, then raise a pull request with us. A collaborator of Janet will review it shortly and provide feedback.
+
+### You have a feature request
+
+In case you have a feature request, please raise an issue with the feature request. We will assess importance of features based on the number of upvotes of said issue. If you already have a concrete idea how this feature may work, you may of course fork and make the necessary changes. Please remember to update the documentation!
+
+### IDE setup
+
+There's no special setup required (as of now)! Just check out the code and start tinkering.
