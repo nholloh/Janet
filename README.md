@@ -1,4 +1,6 @@
-# Janet
+# 🤵🏽‍♀️ Janet
+
+<p align=center style="font-size:5vw">— Just another networking kit —</p>
 
 A thin HTTP networking layer built on URLSession for simple, declarative endpoint specification leveraging the power of async/await.
 
