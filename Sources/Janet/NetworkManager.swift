@@ -62,7 +62,8 @@ extension NetworkManager {
 // MARK: NetworkRequestWithBody
 extension NetworkManager {
     func body<R: NetworkRequestWithBody>(request: R) throws -> Data? {
-        return try httpBodyEncoder.encode(request.body)
+        let encoder = request.httpBodyEncoder ?? httpBodyEncoder
+        return try encoder.encode(request.body)
     }
 }
 
@@ -101,7 +102,7 @@ extension NetworkManager {
             throw Error.responseHasNoData
         }
 
-        let decoder = request.decoder ?? self.httpBodyDecoder
+        let decoder = request.httpBodyDecoder ?? self.httpBodyDecoder
         return try decoder.decode(R.ResponseType.self, from: data)
     }
 }

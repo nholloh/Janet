@@ -11,4 +11,9 @@ public protocol NetworkRequestWithBody: NetworkRequest {
     associatedtype BodyType: Encodable
 
     var body: BodyType { get }
+    var httpBodyEncoder: DataEncoding? { get }
+}
+
+public extension NetworkRequestWithBody {
+    var httpBodyEncoder: DataEncoding? { nil }
 }

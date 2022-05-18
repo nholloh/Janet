@@ -10,9 +10,9 @@ import Foundation
 public protocol NetworkRequestWithResponse: NetworkRequest {
     associatedtype ResponseType: Decodable
 
-    var decoder: JSONDecoder? { get }
+    var httpBodyDecoder: DataDecoding? { get }
 }
 
 public extension NetworkRequestWithResponse {
-    var decoder: JSONDecoder? { nil }
+    var httpBodyDecoder: DataDecoding? { nil }
 }
