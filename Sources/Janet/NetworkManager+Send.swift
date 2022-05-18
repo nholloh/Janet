@@ -76,7 +76,7 @@ private extension NetworkManager {
             throw Error.responseIsNoHTTPURLResponse
         }
 
-        var httpResponse = HTTPResponse(request: httpRequest, response: httpUrlResponse, data: rawResponse.data)
+        var httpResponse = HTTPResponse(request: httpRequest, urlResponse: httpUrlResponse, data: rawResponse.data)
         try await intercept(request: requestConfiguration, httpResponse: &httpResponse)
         return httpResponse
     }
