@@ -33,13 +33,13 @@ A thin HTTP networking layer built on URLSession for simple, declarative endpoin
 
 The following features have been implemented or are planned for implementation.
 
-- [x] [Declarative endpoint configuration](Declarative_Endpoint_Config.md)
-- [x] [Sending requests async/await with URLSession](Sending_Requests.md)
-- [x] [Encodable support for URL queries](Encodable_Querym.md)
-- [x] [Codable support for HTTP bodies](Codable_Body.md)
-- [x] [Custom value en-/decoding](Custom_coders.md)
-- [x] [HTTP response validation](Response_Validation.md)
-- [x] [Request/Response interception](Interception.md)
+- [x] [Declarative endpoint configuration](Documentation/Declarative_Endpoint_Config.md)
+- [x] [Sending requests async/await with URLSession](Documentation/Sending_Requests.md)
+- [x] [Encodable support for URL queries](Documentation/Encodable_Querym.md)
+- [x] [Codable support for HTTP bodies](Documentation/Codable_Body.md)
+- [x] [Custom value en-/decoding](Documentation/Custom_coders.md)
+- [x] [HTTP response validation](Documentation/Response_Validation.md)
+- [x] [Request/Response interception](Documentation/Interception.md)
 - [ ] Unit and integration tests
 - [ ] CI support
 - [ ] Unit test and mock support
