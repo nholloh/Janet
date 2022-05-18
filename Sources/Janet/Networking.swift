@@ -18,13 +18,12 @@ public protocol Networking {
 
     /// Gets or sets the default request interceptor, which is used to inspect or mutate a request
     /// after its construction (URLRequest), right before it is passed to `URLSession` for sending it
-    /// to a web host. Default is `LogRequestInterceptor.default`.
+    /// to a web host. Default is empty.
     var requestInterceptor: NetworkRequestInterceptor { get set }
 
     /// Gets or sets the default response interceptor, which is used to inspect or mutate a response
     /// after receiving it from `URLSession`, before its data may be decoded and passed back to
-    /// the call site. Default is a combination of `LogRequestInterceptor.default`and
-    /// `ValidateHTTPStatusResponseInterceptor.default`.
+    /// the call site. Default is`ValidateHTTPStatusResponseInterceptor.default`.
     var responseInterceptor: NetworkResponseInterceptor { get set }
 
     // MARK: - Send
