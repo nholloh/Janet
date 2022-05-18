@@ -17,9 +17,9 @@ class ChainedResponseInterceptor: NetworkResponseInterceptor {
         self.second = second
     }
 
-    func intercept(response: inout HTTPResponse) throws {
-        try first.intercept(response: &response)
-        try second.intercept(response: &response)
+    func intercept(response: inout HTTPResponse) async throws {
+        try await first.intercept(response: &response)
+        try await second.intercept(response: &response)
     }
 }
 

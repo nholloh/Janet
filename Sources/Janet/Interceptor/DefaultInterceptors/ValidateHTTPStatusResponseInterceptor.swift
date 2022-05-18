@@ -16,9 +16,9 @@ public class ValidateHTTPStatusResponseInterceptor: NetworkResponseInterceptor {
         self.allowedStatusCodes = allowedStatusCodes
     }
 
-    public func intercept(response: inout HTTPResponse) throws {
-        guard allowedStatusCodes.contains(response.response.statusCode) else {
-            throw NetworkManager.Error.errorStatusCode(code: response.response.statusCode, response: response)
+    public func intercept(response: inout HTTPResponse) async throws {
+        guard allowedStatusCodes.contains(response.urlResponse.statusCode) else {
+            throw NetworkManager.Error.errorStatusCode(code: response.urlResponse.statusCode, response: response)
         }
     }
 }

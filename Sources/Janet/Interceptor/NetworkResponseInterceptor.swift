@@ -11,5 +11,5 @@ import Foundation
 public protocol NetworkResponseInterceptor {
     /// Intercepts a response as received by the backend. Data may be mutated on the original response.
     /// - Parameter response: The response, on which mutation is possible.
-    func intercept(response: inout HTTPResponse) throws
+    func intercept(response: inout HTTPResponse) async throws
 }

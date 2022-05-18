@@ -77,7 +77,7 @@ private extension NetworkManager {
         }
 
         var httpResponse = HTTPResponse(request: httpRequest, response: httpUrlResponse, data: rawResponse.data)
-        try intercept(request: requestConfiguration, httpResponse: &httpResponse)
+        try await intercept(request: requestConfiguration, httpResponse: &httpResponse)
         return httpResponse
     }
 }
