@@ -31,22 +31,22 @@ A thin HTTP networking layer built on URLSession for simple, declarative endpoin
 
 The following features have been implemented or are planned for implementation.
 
-[x] [Declarative endpoint configuration](Declarative_Endpoint_Config.md)
-[x] [Sending requests async/await with URLSession](Sending_Requests.md)
-[x] [Encodable support for URL queries](Encodable_Querym.md)
-[x] [Codable support for HTTP bodies](Codable_Body.md)
-[x] [Custom value en-/decoding](Custom_coders.md)
-[x] [HTTP response validation](Response_Validation.md)
-[x] [Request/Response interception](Interception.md)
-[ ] Unit and integration tests
-[ ] CI support
-[ ] Unit test and mock support
-[ ] DocC support
-[ ] SSL Pinning (TLS certificate and Public Key)
-[ ] Multipart & Multipart Form support
-[ ] File Up- and Download with Progress
-[ ] CocoaPods support
-[ ] Carthage support
+- [x] [Declarative endpoint configuration](Declarative_Endpoint_Config.md)
+- [x] [Sending requests async/await with URLSession](Sending_Requests.md)
+- [x] [Encodable support for URL queries](Encodable_Querym.md)
+- [x] [Codable support for HTTP bodies](Codable_Body.md)
+- [x] [Custom value en-/decoding](Custom_coders.md)
+- [x] [HTTP response validation](Response_Validation.md)
+- [x] [Request/Response interception](Interception.md)
+- [ ] Unit and integration tests
+- [ ] CI support
+- [ ] Unit test and mock support
+- [ ] DocC support
+- [ ] SSL Pinning (TLS certificate and Public Key)
+- [ ] Multipart & Multipart Form support
+- [ ] File Up- and Download with Progress
+- [ ] CocoaPods support
+- [ ] Carthage support
 
 If you would like to raise a feature request, please refer to the contribution section first.
 
@@ -157,7 +157,9 @@ For detailed documentation, please check the [Features](Documentation/Features.m
 Its an acronym, which stands for:
 
 **J** Just
+
 **A** another
+
 **NET** Network (library)
 
 Also, its a reference to an incredibly helpful and empathetic AI from the series The Good Place. If you haven't seen it, you should definitely check it out!
