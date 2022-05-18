@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftlintplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/usami-k/SwiftLintPlugin",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f844a46b908910a34695fc429e2030b9e7003105"
+      }
+    }
+  ],
+  "version" : 2
+}
