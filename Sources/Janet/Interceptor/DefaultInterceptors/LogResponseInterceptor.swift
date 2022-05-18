@@ -27,7 +27,7 @@ public class LogResponseInterceptor: NetworkResponseInterceptor {
         - URL: \(response.request.urlRequest.url?.absoluteString ?? "nil")
         - Method: \(response.request.urlRequest.httpMethod ?? "nil")
         - Headers:
-          \(response.response.allHeaderFields.debugDescription)
+          \(response.urlResponse.allHeaderFields.debugDescription)
         - Body:
           \(stringEncodedBody ?? "nil")
         """
