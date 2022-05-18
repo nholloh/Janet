@@ -10,7 +10,7 @@ import Foundation
 public struct HTTPResponse {
     public let request: HTTPRequest
 
-    public var response: HTTPURLResponse
+    public var urlResponse: HTTPURLResponse
 
     public var data: Data?
 }
