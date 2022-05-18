@@ -4,23 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "Network",
-    platforms: [.iOS(.v13), .macOS(.v10_15)],
+    name: "Janet",
+    platforms: [.iOS(.v13), .macOS(.v10_15), .tvOS(.v13), .watchOS(.v6)],
     products: [
         .library(
-            name: "Network",
-            targets: ["Network"]
+            name: "Janet",
+            targets: ["Janet"]
         )
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Network",
+            name: "Janet",
             dependencies: []
         ),
         .testTarget(
-            name: "NetworkTests",
-            dependencies: ["Network"]
+            name: "JanetTests",
+            dependencies: ["Janet"]
         )
     ]
 )

@@ -1,5 +1,5 @@
 import XCTest
-@testable import Network
+@testable import Janet
 
 final class NetworkTests: XCTestCase {
 
