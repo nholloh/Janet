@@ -9,7 +9,7 @@ public protocol NetworkRequestWithQuery: NetworkRequest {
 To conform to the protocol, add a `query` property to your request type. You may supply this query dynamically (through the type's initialiser) or statically.
 
 ```swift
-struct DynamicQueryNetworkRequest: NetworkRequest, NetworkRequestWithBody {
+struct DynamicQueryNetworkRequest: NetworkRequest, NetworkRequestWithQuery {
     let method: HTTPMethod = .get
     let query: Encodable
     let endpoint: URL = .init(string: "https://mywebsite.net/api/sample")!
@@ -17,7 +17,7 @@ struct DynamicQueryNetworkRequest: NetworkRequest, NetworkRequestWithBody {
 
 // or
 
-struct StaticQueryNetworkRequest: NetworkRequest, NetworkRequestWithBody {
+struct StaticQueryNetworkRequest: NetworkRequest, NetworkRequestWithQuery {
     struct FilterQuery: Encodable {
         let filter: String
     }
