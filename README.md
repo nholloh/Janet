@@ -35,15 +35,15 @@ The following features have been implemented or are planned for implementation.
 
 - [x] [Declarative endpoint configuration](Documentation/Declarative_Endpoint_Config.md)
 - [x] [Sending requests async/await with URLSession](Documentation/Sending_Requests.md)
-- [x] [Encodable support for URL queries](Documentation/Encodable_Querym.md)
+- [x] [Encodable support for URL queries](Documentation/Encodable_Query.md)
 - [x] [Codable support for HTTP bodies](Documentation/Codable_Body.md)
-- [x] [Custom value en-/decoding](Documentation/Custom_coders.md)
+- [x] [Custom value en-/decoding](Documentation/Custom_Coders.md)
 - [x] [HTTP response validation](Documentation/Response_Validation.md)
 - [x] [Request/Response interception](Documentation/Interception.md)
 - [ ] Unit and integration tests
 - [ ] CI support
 - [ ] Unit test and mock support
-- [ ] DocC support
+- [ ] DocC wiki
 - [ ] SSL Pinning (TLS certificate and Public Key)
 - [ ] Multipart & Multipart Form support
 - [ ] File Up- and Download with Progress
@@ -144,7 +144,7 @@ Then, create an instance of your new request configuration and use it with an in
         // Create an instance of the request.
         let request = GetUsersRequest()
         
-        // Create a network manager. You may use an shared instance.
+        // Create a network manager. You may use a shared instance.
         let networkManager = NetworkManager()
         
         // Send the request.
