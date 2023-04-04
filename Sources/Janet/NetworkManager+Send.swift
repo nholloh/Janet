@@ -62,6 +62,7 @@ private extension NetworkManager {
 
         var urlRequest = URLRequest(url: url)
         urlRequest.allHTTPHeaderFields = requestConfiguration.headers.reduce(into: [String: String]()) { $0[$1.key.headerKey] = $1.value }
+        urlRequest.httpMethod = requestConfiguration.method.methodString
 
         return urlRequest
     }
