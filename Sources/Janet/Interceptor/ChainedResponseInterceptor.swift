@@ -17,9 +17,10 @@ class ChainedResponseInterceptor: NetworkResponseInterceptor {
         self.second = second
     }
 
-    func intercept(response: inout HTTPResponse) async throws {
-        try await first.intercept(response: &response)
-        try await second.intercept(response: &response)
+    func intercept(response: inout HTTPResponse) async throws -> NetworkResponseInterceptorResult {
+        let firstResult = try await first.intercept(response: &response)
+        let secondResult = try await second.intercept(response: &response)
+        return firstResult.combine(with: secondResult)
     }
 }
 
@@ -34,10 +35,10 @@ public extension NetworkResponseInterceptor {
 
     static func chain(inOrder interceptors: [NetworkResponseInterceptor]) -> NetworkResponseInterceptor {
         guard interceptors.count == 0 else {
-            return ClosureResponseInterceptor { _ in }
+            return ClosureResponseInterceptor { _ in return .defaultHandling }
         }
 
-        return interceptors.reduce(ClosureResponseInterceptor { _ in }) { chainedInterceptor, nextInterceptor in
+        return interceptors.reduce(ClosureResponseInterceptor { _ in return .defaultHandling }) { chainedInterceptor, nextInterceptor in
             chainedInterceptor.chain(before: nextInterceptor)
         }
     }

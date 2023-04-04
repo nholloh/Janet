@@ -68,7 +68,7 @@ private extension NetworkManager {
 
     func getResponse<R: NetworkRequest>(for httpRequest: HTTPRequest, requestConfiguration: R) async throws -> HTTPResponse {
         var httpRequest = httpRequest
-        intercept(request: requestConfiguration, httpRequest: &httpRequest)
+        try await intercept(request: requestConfiguration, httpRequest: &httpRequest)
 
         let rawResponse = try await urlSession.data(request: httpRequest.urlRequest)
 
@@ -77,7 +77,12 @@ private extension NetworkManager {
         }
 
         var httpResponse = HTTPResponse(request: httpRequest, urlResponse: httpUrlResponse, data: rawResponse.data)
-        try await intercept(request: requestConfiguration, httpResponse: &httpResponse)
+        let interceptResult = try await intercept(request: requestConfiguration, httpResponse: &httpResponse)
+
+        if case .retryRequest = interceptResult {
+            return try await getResponse(for: httpRequest, requestConfiguration: requestConfiguration)
+        }
+
         return httpResponse
     }
 }

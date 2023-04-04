@@ -9,15 +9,15 @@ import Foundation
 
 /// A request interceptor, which receives a closure to process the HTTPRequest.
 public class ClosureRequestInterceptor: NetworkRequestInterceptor {
-    private let closure: (inout HTTPRequest) -> Void
+    private let closure: (inout HTTPRequest) async throws -> Void
 
     /// Creates a request interceptor, which receives a closure to process the HTTPRequest.
     /// - Parameter closure: The closure which receives and mutates the HTTPRequest.
-    public init(_ closure: @escaping (inout HTTPRequest) -> Void) {
+    public init(_ closure: @escaping (inout HTTPRequest) async throws -> Void) {
         self.closure = closure
     }
 
-    public func intercept(request: inout HTTPRequest) {
-        closure(&request)
+    public func intercept(request: inout HTTPRequest) async throws {
+        try await closure(&request)
     }
 }

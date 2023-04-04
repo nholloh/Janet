@@ -69,13 +69,13 @@ extension NetworkManager {
 
 // MARK: - NetworkRequestWithRequestInterceptor
 extension NetworkManager {
-    func intercept<R>(request: R, httpRequest: inout HTTPRequest) {
+    func intercept<R>(request: R, httpRequest: inout HTTPRequest) async throws {
         guard let requestWithCustomInterceptor = request as? NetworkRequestWithRequestInterceptor else {
-            requestInterceptor.intercept(request: &httpRequest)
+            try await requestInterceptor.intercept(request: &httpRequest)
             return
         }
 
-        requestWithCustomInterceptor.requestInterceptor
+        try await requestWithCustomInterceptor.requestInterceptor
             .chain(before: requestInterceptor)
             .intercept(request: &httpRequest)
     }
@@ -83,13 +83,12 @@ extension NetworkManager {
 
 // MARK: - NetworkRequestWithResponseInterceptor
 extension NetworkManager {
-    func intercept<R>(request: R, httpResponse: inout HTTPResponse) async throws {
+    func intercept<R>(request: R, httpResponse: inout HTTPResponse) async throws -> NetworkResponseInterceptorResult {
         guard let requestWithCustomInterceptor = request as? NetworkRequestWithResponseInterceptor else {
-            try await responseInterceptor.intercept(response: &httpResponse)
-            return
+            return try await responseInterceptor.intercept(response: &httpResponse)
         }
 
-        try await requestWithCustomInterceptor.responseInterceptor
+        return try await requestWithCustomInterceptor.responseInterceptor
             .chain(after: responseInterceptor)
             .intercept(response: &httpResponse)
     }
