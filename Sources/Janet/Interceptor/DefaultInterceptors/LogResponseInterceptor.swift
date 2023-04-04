@@ -26,6 +26,7 @@ public class LogResponseInterceptor: NetworkResponseInterceptor {
         - ID: \(response.request.uuid)
         - URL: \(response.request.urlRequest.url?.absoluteString ?? "nil")
         - Method: \(response.request.urlRequest.httpMethod ?? "nil")
+        - Status: \(response.urlResponse.statusCode)
         - Headers:
           \(response.urlResponse.allHeaderFields.debugDescription)
         - Body:
