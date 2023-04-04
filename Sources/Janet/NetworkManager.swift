@@ -38,15 +38,18 @@ public final class NetworkManager: Networking {
     /// the call site. Default is `ValidateHTTPStatusResponseInterceptor.default`.
     public var responseInterceptor: NetworkResponseInterceptor = ValidateHTTPStatusResponseInterceptor.default
 
+    /// Creates a new instance of NetworkManager.
+    public init() { }
+
     // MARK: - Internal properties
     let urlSession: URLSession = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: nil)
 }
 
 // MARK: - NetworkRequestWithQuery
 extension NetworkManager {
-    func queryItems(request: any NetworkRequest) throws -> [URLQueryItem] {
+    func queryItems(request: any NetworkRequest) throws -> [URLQueryItem]? {
         guard let requestWithQuery = request as? NetworkRequestWithQuery else {
-            return []
+            return nil
         }
 
         guard let queryItemsDictionary = requestWithQuery.query.dictionaryRepresentation else {
@@ -69,13 +72,13 @@ extension NetworkManager {
 
 // MARK: - NetworkRequestWithRequestInterceptor
 extension NetworkManager {
-    func intercept<R>(request: R, httpRequest: inout HTTPRequest) {
+    func intercept<R>(request: R, httpRequest: inout HTTPRequest) async throws {
         guard let requestWithCustomInterceptor = request as? NetworkRequestWithRequestInterceptor else {
-            requestInterceptor.intercept(request: &httpRequest)
+            try await requestInterceptor.intercept(request: &httpRequest)
             return
         }
 
-        requestWithCustomInterceptor.requestInterceptor
+        try await requestWithCustomInterceptor.requestInterceptor
             .chain(before: requestInterceptor)
             .intercept(request: &httpRequest)
     }
@@ -83,13 +86,12 @@ extension NetworkManager {
 
 // MARK: - NetworkRequestWithResponseInterceptor
 extension NetworkManager {
-    func intercept<R>(request: R, httpResponse: inout HTTPResponse) async throws {
+    func intercept<R>(request: R, httpResponse: inout HTTPResponse) async throws -> NetworkResponseInterceptorResult {
         guard let requestWithCustomInterceptor = request as? NetworkRequestWithResponseInterceptor else {
-            try await responseInterceptor.intercept(response: &httpResponse)
-            return
+            return try await responseInterceptor.intercept(response: &httpResponse)
         }
 
-        try await requestWithCustomInterceptor.responseInterceptor
+        return try await requestWithCustomInterceptor.responseInterceptor
             .chain(after: responseInterceptor)
             .intercept(response: &httpResponse)
     }

@@ -14,7 +14,7 @@ public class LogResponseInterceptor: NetworkResponseInterceptor {
         self.log = log
     }
 
-    public func intercept(response: inout HTTPResponse) throws {
+    public func intercept(response: inout HTTPResponse) throws -> NetworkResponseInterceptorResult {
         var stringEncodedBody: String?
         if let body = response.data {
             stringEncodedBody = String(data: body, encoding: .utf8)
@@ -33,5 +33,7 @@ public class LogResponseInterceptor: NetworkResponseInterceptor {
         """
 
         log(message)
+
+        return .defaultHandling
     }
 }
