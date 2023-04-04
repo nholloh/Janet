@@ -15,5 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     container: swift
     steps:
+    - id: list
+      run: ls -laR
     - id: swift-test
       run: swift test
