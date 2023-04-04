@@ -44,9 +44,9 @@ public final class NetworkManager: Networking {
 
 // MARK: - NetworkRequestWithQuery
 extension NetworkManager {
-    func queryItems(request: any NetworkRequest) throws -> [URLQueryItem] {
+    func queryItems(request: any NetworkRequest) throws -> [URLQueryItem]? {
         guard let requestWithQuery = request as? NetworkRequestWithQuery else {
-            return []
+            return nil
         }
 
         guard let queryItemsDictionary = requestWithQuery.query.dictionaryRepresentation else {
