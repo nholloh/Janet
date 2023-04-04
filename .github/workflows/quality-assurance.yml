@@ -1,0 +1,19 @@
+name: 'quality-assurance'
+run-name: 'Quality Assurance for ${{ github.ref_name }}'
+on:
+  pull-request:
+    branches:
+    - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: 'Run tests'
+    # runs-on: macos-latest
+    runs-on: ubuntu-latest
+    container: swift
+    steps:
+    - id: swift-test
+      run: swift test
