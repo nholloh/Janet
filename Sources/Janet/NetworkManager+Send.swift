@@ -48,7 +48,8 @@ public extension NetworkManager {
     }
 }
 
-private extension NetworkManager {
+// These do not belong to Janet's public interface, however can be used for testing.
+extension NetworkManager {
     func makeURLRequest<R: NetworkRequest>(requestConfiguration: R) throws -> URLRequest {
         guard var urlComponents = URLComponents(string: requestConfiguration.endpoint.absoluteString) else {
             throw Error.invalidURL(requestConfiguration.endpoint)
