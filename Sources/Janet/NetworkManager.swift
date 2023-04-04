@@ -38,6 +38,9 @@ public final class NetworkManager: Networking {
     /// the call site. Default is `ValidateHTTPStatusResponseInterceptor.default`.
     public var responseInterceptor: NetworkResponseInterceptor = ValidateHTTPStatusResponseInterceptor.default
 
+    /// Creates a new instance of NetworkManager.
+    public init() { }
+
     // MARK: - Internal properties
     let urlSession: URLSession = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: nil)
 }
