@@ -12,16 +12,11 @@ let package = Package(
             targets: ["Janet"]
         )
     ],
-    dependencies: [
-        .package(url: "https://github.com/usami-k/SwiftLintPlugin", branch: "main")
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "Janet",
-            dependencies: [],
-            plugins: [
-                .plugin(name: "SwiftLintPlugin", package: "SwiftLintPlugin"),
-            ]
+            dependencies: []
         ),
         .testTarget(
             name: "JanetTests",
