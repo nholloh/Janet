@@ -39,10 +39,18 @@ public final class NetworkManager: Networking {
     public var responseInterceptor: NetworkResponseInterceptor = ValidateHTTPStatusResponseInterceptor.default
 
     /// Creates a new instance of NetworkManager.
-    public init() { }
+    public init() {
+        self.urlSession = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: nil)
+    }
+    
+    /// Creates a new instance of NetworkManager.
+    /// - Parameter urlSession: The underlying `URLSession` to be used.
+    public init(urlSession: URLSession) {
+       self.urlSession = urlSession
+    }
 
     // MARK: - Internal properties
-    let urlSession: URLSession = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: nil)
+    let urlSession: URLSession
 }
 
 // MARK: - NetworkRequestWithQuery
